@@ -5,10 +5,23 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+configurations {
+    provided
+    compile.extendsFrom(provided)
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    provided 'org.projectlombok:lombok:1.16.0'
+
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'org.jsoup:jsoup:1.9.2'
+
 }
